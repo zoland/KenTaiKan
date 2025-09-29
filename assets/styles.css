@@ -1,34 +1,234 @@
-:root{ --brand:#c41e3a; --bg:#f5f1e8; --paper:#fff; --ink:#2c2c2c; }
-*{ box-sizing:border-box; }
-body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:linear-gradient(135deg,#f5f1e8,#e8dcc0); color:var(--ink); }
-.top{ display:flex; justify-content:space-between; align-items:center; padding:14px 18px; background:#fff; border-bottom:4px solid var(--brand); position:sticky; top:0; z-index:10; }
-.brand{ display:flex; gap:12px; align-items:center; }
-.brand img{ width:48px; height:48px; object-fit:contain; }
-.sub{ font-size:.9rem; opacity:.75; }
-.nav a{ margin:0 8px; color:var(--brand); text-decoration:none; font-weight:600; }
-.nav a:hover{ text-decoration:underline; }
-.hero{ text-align:center; padding:32px 16px; }
-.grid{ max-width:1100px; margin:0 auto; padding:18px; display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
-.tile{ display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:18px; min-height:140px; background:var(--paper); border-left:6px solid var(--brand); border-radius:14px; box-shadow:0 6px 22px rgba(0,0,0,.08); color:inherit; text-decoration:none; transition:.2s transform,.2s box-shadow; }
-.tile.circle{ border-radius:999px; align-items:center; text-align:center; }
-.tile:hover{ transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.12); }
-.tile-title{ font-weight:800; color:var(--brand); font-size:1.1rem; }
-.tile-note{ opacity:.8; margin-top:6px; }
-.page{ max-width:900px; margin:0 auto; background:#fff; padding:22px; border-radius:14px; box-shadow:0 10px 26px rgba(0,0,0,.08); border-left:8px solid var(--brand); }
-.h1{ color:var(--brand); }
-.foot{ text-align:center; padding:24px; color:#fff; background:var(--brand); margin-top:36px; }
-.card{ background:#f9f7f4; padding:14px; border-radius:10px; border:1px solid #eee; margin-bottom:14px; }
-ul{ padding-left:1.2rem; }
-.timeline{ display:grid; gap:12px; }
-.ti{ background:#f9f7f4; padding:12px 14px; border-left:4px solid var(--brand); border-radius:8px; }
-.year{ font-weight:700; color:var(--brand); }
-.belts{ display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
-.belt{ width:90px; height:30px; border-radius:16px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; text-shadow:0 1px 2px rgba(0,0,0,.5); }
-.b-white{ background:#fff; color:#000; border:2px solid #ccc; }
-.b-yellow{ background:#ffd700; color:#000; }
-.b-orange{ background:#ff8c00; }
-.b-red{ background:#dc143c; }
-.b-green{ background:#228b22; }
-.b-blue{ background:#4169e1; }
-.b-brown{ background:#8b4513; }
-.b-black{ background:#000; }
+/* ============ Glass theme variables ============ */
+:root {
+  /* Фон и стекло */
+  --bg-start: #0b0f1a;
+  --bg-end:   #1b2334;
+  --bg-gradient: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+
+  /* Текст и акцент */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --accent-color: #c41e3a;
+
+  --transition: 0.2s ease;
+}
+
+/* ============ Base ============ */
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  color: var(--text-primary);
+  background: var(--bg-gradient);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #ffd7dc;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: #fff; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ============ Header: только логотип ============ */
+.site-header {
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  background: transparent;
+}
+.logo-link img {
+  height: 56px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+  transition: transform var(--transition);
+}
+.logo-link:hover img { transform: scale(1.03); }
+
+/* Скрыть верхнее меню, если осталось в верстке */
+.top-nav, .main-nav, header nav { display: none !important; }
+
+/* ============ “Слайды” и блоки ============ */
+.slide {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-left: 8px solid var(--accent-color);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 28px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+h1 {
+  color: var(--accent-color);
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+h2 {
+  color: var(--accent-color);
+  font-size: 1.9rem;
+  margin-bottom: 18px;
+  border-bottom: 2px solid rgba(255,255,255,0.08);
+  padding-bottom: 8px;
+}
+
+h3 {
+  color: #ffb4c0;
+  font-size: 1.2rem;
+  margin: 16px 0 12px;
+}
+
+p { color: var(--text-primary); }
+small, .muted { color: var(--text-secondary); }
+
+/* Секции с кандзи */
+.kanji-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 24px 0;
+}
+.kanji-box {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.kanji-title {
+  font-size: 1.3rem;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* Списки */
+ul { list-style: none; padding-left: 0; }
+li {
+  background: rgba(255,255,255,0.06);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px 14px;
+  color: var(--text-primary);
+}
+
+/* Пояса */
+.belt-progression {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.belt {
+  width: 90px;
+  height: 34px;
+  margin: 6px;
+  border-radius: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.belt.white  { background: #ffffff; color: #000; border-color: #ccc; }
+.belt.yellow { background: #ffd700; color: #000; }
+.belt.orange { background: #ff8c00; }
+.belt.red    { background: #dc143c; }
+.belt.green  { background: #228b22; }
+.belt.blue   { background: #4169e1; }
+.belt.brown  { background: #8b4513; }
+.belt.black  { background: #000000; }
+
+/* Цитаты */
+.quote {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-left: 5px solid var(--accent-color);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 18px 0;
+  font-style: italic;
+}
+.quote-author {
+  text-align: right;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-top: 10px;
+}
+
+/* Таймлайн */
+.timeline { position: relative; padding: 10px 0; }
+.timeline-item {
+  margin: 12px 0;
+  padding: 12px 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 10px;
+}
+.year { font-weight: 700; color: var(--accent-color); }
+
+/* Этикет и японские фразы */
+.etiquette-section {
+  margin: 16px 0;
+  padding: 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+}
+.japanese-phrase {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 14px;
+  font-weight: 700;
+  display: inline-block;
+  margin: 5px;
+}
+
+/* Футер */
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 28px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  color: var(--text-primary);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .kanji-section { grid-template-columns: 1fr; }
+  .belt-progression { justify-content: center; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
+}
+
+/* ===== Доп. селекторы из прежнего CSS (если используются где-то) ===== */
+.dropdown-menu { background: var(--glass-bg); backdrop-filter: blur(20px); }
+.dropdown-item { color: var(--text-primary); }
+.participant-header, .participant-info, .scan-status, .network-participant {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 12px; color: var(--text-primary);
+}
+.app-nav { display: grid; grid-template-columns: repeat(4, 1fr); }
