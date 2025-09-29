@@ -1,0 +1,34 @@
+:root{ --brand:#c41e3a; --bg:#f5f1e8; --paper:#fff; --ink:#2c2c2c; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:linear-gradient(135deg,#f5f1e8,#e8dcc0); color:var(--ink); }
+.top{ display:flex; justify-content:space-between; align-items:center; padding:14px 18px; background:#fff; border-bottom:4px solid var(--brand); position:sticky; top:0; z-index:10; }
+.brand{ display:flex; gap:12px; align-items:center; }
+.brand img{ width:48px; height:48px; object-fit:contain; }
+.sub{ font-size:.9rem; opacity:.75; }
+.nav a{ margin:0 8px; color:var(--brand); text-decoration:none; font-weight:600; }
+.nav a:hover{ text-decoration:underline; }
+.hero{ text-align:center; padding:32px 16px; }
+.grid{ max-width:1100px; margin:0 auto; padding:18px; display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+.tile{ display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding:18px; min-height:140px; background:var(--paper); border-left:6px solid var(--brand); border-radius:14px; box-shadow:0 6px 22px rgba(0,0,0,.08); color:inherit; text-decoration:none; transition:.2s transform,.2s box-shadow; }
+.tile.circle{ border-radius:999px; align-items:center; text-align:center; }
+.tile:hover{ transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.12); }
+.tile-title{ font-weight:800; color:var(--brand); font-size:1.1rem; }
+.tile-note{ opacity:.8; margin-top:6px; }
+.page{ max-width:900px; margin:0 auto; background:#fff; padding:22px; border-radius:14px; box-shadow:0 10px 26px rgba(0,0,0,.08); border-left:8px solid var(--brand); }
+.h1{ color:var(--brand); }
+.foot{ text-align:center; padding:24px; color:#fff; background:var(--brand); margin-top:36px; }
+.card{ background:#f9f7f4; padding:14px; border-radius:10px; border:1px solid #eee; margin-bottom:14px; }
+ul{ padding-left:1.2rem; }
+.timeline{ display:grid; gap:12px; }
+.ti{ background:#f9f7f4; padding:12px 14px; border-left:4px solid var(--brand); border-radius:8px; }
+.year{ font-weight:700; color:var(--brand); }
+.belts{ display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.belt{ width:90px; height:30px; border-radius:16px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; text-shadow:0 1px 2px rgba(0,0,0,.5); }
+.b-white{ background:#fff; color:#000; border:2px solid #ccc; }
+.b-yellow{ background:#ffd700; color:#000; }
+.b-orange{ background:#ff8c00; }
+.b-red{ background:#dc143c; }
+.b-green{ background:#228b22; }
+.b-blue{ background:#4169e1; }
+.b-brown{ background:#8b4513; }
+.b-black{ background:#000; }
