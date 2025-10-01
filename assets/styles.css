@@ -237,3 +237,69 @@ li {
   border-radius: 12px; color: var(--text-primary);
 }
 .app-nav { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+/* Фиксированные верх/низ на мобильных + стили заголовков */
+:root {
+  --mobile-header-h: 72px;
+  --mobile-footer-h: 48px;
+}
+
+/* Тексты в шапке */
+.site-header .titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.site-header .line-1,
+.site-header .line-2 {
+  color: var(--accent-color);   /* красный */
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.site-header .line-1 { font-size: 16px; }
+.site-header .line-2 { font-size: 18px; }
+
+/* Имя страницы (добавляется на внутренних страницах) */
+.page-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  margin-left: 8px;
+  opacity: 0.9;
+}
+.page-name:empty { display: none; }
+
+/* Мобильный режим: фиксируем шапку и футер, добавляем отступы у body */
+@media (max-width: 768px) {
+  body {
+    padding-top: var(--mobile-header-h);
+    padding-bottom: var(--mobile-footer-h);
+  }
+  .site-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    min-height: var(--mobile-header-h);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .foot {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 900;
+    min-height: var(--mobile-footer-h);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--glass-border);
+    margin: 0; /* убираем внешний отступ, если был */
+  }
+  /* Чуть компактнее шапку на телефоне */
+  .site-header { gap: 12px; padding: 10px 16px; }
+  .logo-link img { height: 44px; }
+}
