@@ -46,7 +46,7 @@
 
     <figure class="kanji-box" style="text-align:center">
       <!-- При наличии замените на свой файл -->
-      <img src="../assets/A1.jpg" alt="Аракава Ёсуке" style="max-width:100%; border-radius:12px;">
+      <img src="../assets/A1.png" alt="Аракава Ёсуке" style="max-width:100%; border-radius:12px;">
       <figcaption class="muted" style="margin-top:8px">Аракава Ёсуке, 7 дан Айкикай, школа Юбикай</figcaption>
     </figure>
   </section>        
@@ -106,11 +106,10 @@
     (function buildGallery(prefix, containerId) {
       const exts = ['avif', 'webp', 'jpg', 'jpeg', 'png'];
       const variants = [];
-      // Сгенерируем разумный набор базовых имён: A1..A24, A01..A24, A-1..A-24
-      for (let i = 1; i <= 24; i++) {
+      // Сгенерируем разумный набор базовых имён: A1..A8, A01..A08
+      for (let i = 1; i <= 8; i++) {
         variants.push(prefix + i);
         variants.push(prefix + String(i).padStart(2, '0'));
-        variants.push(prefix + '-' + i);
       }
       const container = document.getElementById(containerId);
       const basePath = '../assets/';
