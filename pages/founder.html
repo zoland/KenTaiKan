@@ -24,17 +24,47 @@
   
     <main class="container">
     <article class="slide">
-      <h1 class="h1">О школе Кен Тай Кан</h1>
-      <p>Клуб айкидо Айкикай «Кен Тай Кан» основан в 2008 году в Москве Андреем Золотарёвым.</p>
+    
+        <h1 class="h1">Аракава Ёсуке</h1>
+        <section class="kanji-section">
+            <div class="kanji-box">
+                <h3 class="kanji-title">Кратко</h3>
+                <ul>
+                <li>7 дан Айкидо Айкикай
+                <li>Президент Клуба "Юбикай Айкидо".
+                <li>Руководитель Клуба Айкидо в спортивном клубе муниципалитета г. Токио. 
+                <li>Член Правления спортивного клуба муниципалитета г. Токио.
+                <li>Полномочный секретарь совета Центра боевых искусств "Будокан".                                   
+                <li>Заместитель Председателя Федерации Айкидо г. Токио.
+                <li>Вице-президент Объединений Айкидо Университетов Японии. 
+                </ul>
+      
+                <p>Сэнсэй уделяя особое внимание внимание чистоте техники, естественному перемещению корпуса и работе центра</p>
+            </div>
 
-      <h2>Хронология</h2>
+            <figure class="kanji-box" style="text-align:center">
+              <img src="../assets/Z1.jpg" alt="Золотарёв Андрей" style="max-width:100%; border-radius:12px;">
+              <figcaption class="muted" style="margin-top:8px">Золотарёв Андрей — основатель «Кен Тай Кан»</figcaption>
+            </figure>
+        </section>        
+
+        <ul>
+        <li>Родился 26 июля 1960 года в Москве. 
+        <li>1985 Закончил Московский институт нефти и газа им.И.М.Губкина, специализация АСУ
+        <li>2001 Защитил кандидатскую диссертацию по администативному праву
+        <li>Занимал реководящие должности в МПР РФ и Правительстве Пермского края
+        <li>Работал в руководящих должностях крупных компаний (Лукойл,Русал,Норникель,РЖД)
+        <li>Вступил в Айкикай в 1994 году. 
+        <li>1988  Первые занятия айкидо проходил в группе Егорова Н.Н.(6дан айкидо Айкикай) после прочтения брошюры о биографии основателя школы Морихея Уесибы и основах его учения. 
+         В том же году перешел в Московский айки-клуб под руководством Матвеева В.А.(6 дан Айкидо Айкикай), в котором прозанимался более 10 лет и сдал на 1 дан Сейки-сенсею(7 дан Айкидо Айкикай, сенсей Хомбу Додзё), по рекомендации В.А.Матвеева. Являлся одним из ведущих учеников в клубе.
+        </ul>
+     
+     
+      <h1 class="h1">О школе Кен Тай Кан</h1>
+
+      <h2>Вехи</h2>
       <div class="timeline">
        
- <div class="ti"><span class="year">1988</span>
- Первые занятия айкидо проходил в группе Егорова Н.Н. в 1988 году после прочтения брошюры о биографии основателя школы Морихея Уесибы и основах его учения. 
- 
- <div class="ti"><span class="year">1988</span>
- В том же году перешел в Московский айки-клуб под руководством Матвеева В.А.(6 дан Айкидо Айкикай), в котором прозанимался более 10 лет и сдал на 1 дан Сейки-сенсею(7 дан Айкидо Айкикай, сенсей Хомбу Додзё), по рекомендации В.А.Матвеева. Являлся одним из ведущих учеников в клубе.
  
  <div class="ti"><span class="year">1997</span>
  Под руководством В.А.Матвеева в течение нескольких лет также занимался такими видами искусств как айкикен, дзе-до, иай-до (1 кю в 1997 году).
@@ -130,6 +160,54 @@
   </main>
   
   <footer class="foot">© Кен Тай Кан, 2008–2025</footer>
+  
+  <script>
+    (function buildGallery(prefix, containerId) {
+      const exts = ['avif', 'webp', 'jpg', 'jpeg', 'png'];
+      const variants = [];
+      // Сгенерируем разумный набор базовых имён: Z1..Z8, Z01..Z08
+      for (let i = 1; i <= 8; i++) {
+        variants.push(prefix + i);
+        variants.push(prefix + String(i).padStart(2, '0'));
+      }
+      const container = document.getElementById(containerId);
+      const basePath = '../assets/';
+      const used = new Set();
+
+      function tryFirstAvailable(base) {
+        let resolved = false;
+        exts.reduce((p, ext) => {
+          return p.then(() => {
+            if (resolved) return;
+            return new Promise((resolve) => {
+              const img = new Image();
+              img.decoding = 'async';
+              img.loading = 'lazy';
+              img.fetchPriority = 'low';
+              img.src = basePath + base + '.' + ext;
+              img.onload = () => {
+                if (!resolved && !used.has(base)) {
+                  resolved = true;
+                  used.add(base);
+                  const fig = document.createElement('figure');
+                  const tag = document.createElement('img');
+                  tag.src = img.src;
+                  tag.alt = base;
+                  fig.appendChild(tag);
+                  container.appendChild(fig);
+                }
+                resolve();
+              };
+              img.onerror = () => resolve();
+            });
+          });
+        }, Promise.resolve());
+      }
+
+      variants.forEach(tryFirstAvailable);
+    })('Z', 'gallery-founder');
+  </script>  
+  
   <script src="../assets/script.js"></script>
 </body>
 
