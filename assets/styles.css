@@ -160,7 +160,7 @@ li {
   color: var(--text-primary);
 }
 
-/* Пояса */
+/* Пояса
 .belt-progression {
   display: flex; justify-content: space-between; margin: 20px 0; flex-wrap: wrap;
 }
@@ -179,7 +179,7 @@ li {
 .belt.blue   { background: #4169e1; }
 .belt.brown  { background: #8b4513; }
 .belt.black  { background: #000000; }
-
+ */
 /* Цитаты */
 .quote {
   background: var(--glass-bg);
@@ -302,4 +302,86 @@ li {
   /* Чуть компактнее шапку на телефоне */
   .site-header { gap: 12px; padding: 10px 16px; }
   .logo-link img { height: 44px; }
+}
+
+/* ---------- Belts (пояса) ---------- */
+.belts {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 8px;
+}
+
+.belt-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--glass-bg, rgba(255,255,255,0.04));
+  border: 1px solid var(--glass-border, rgba(0,0,0,0.12));
+}
+
+.belt-visual {
+  position: relative;
+  width: 180px;
+  height: 28px;
+  border-radius: 7px;
+  background: var(--belt-color, #ccc);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+/* Лёгкая “текстура” ткани */
+.belt-visual::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.06), rgba(255,255,255,0.06) 6px,
+    rgba(0,0,0,0.06) 6px, rgba(0,0,0,0.06) 12px
+  );
+  pointer-events: none;
+}
+/* Узел по центру */
+.belt-visual::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: -2px;
+  transform: translateX(-50%);
+  width: 28px; height: 32px;
+  border-radius: 5px;
+  background: var(--belt-knot, rgba(0,0,0,0.25));
+  box-shadow:
+    inset 0 1px 3px rgba(255,255,255,0.25),
+    inset 0 -1px 3px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(0,0,0,0.2);
+}
+
+.belt-text {
+  line-height: 1.15;
+}
+.belt-name {
+  font-weight: 700;
+  color: var(--belt-ink, #fff);
+}
+.belt-kyu {
+  font-size: 12px;
+  opacity: 0.85;
+  color: var(--belt-ink, #fff);
+}
+
+/* Цвета поясов (настройки тона узла и читаемости текста) */
+.belt-item[data-color="white"]  { --belt-color: #ffffff; --belt-knot: #e5e7eb; --belt-ink:#111; }
+.belt-item[data-color="yellow"] { --belt-color: #FCD34D; --belt-knot: #EAB308; --belt-ink:#111; }
+.belt-item[data-color="orange"] { --belt-color: #FB923C; --belt-knot: #F97316; --belt-ink:#111; }
+.belt-item[data-color="red"]    { --belt-color: #EF4444; --belt-knot: #DC2626; --belt-ink:#fff; }
+.belt-item[data-color="green"]  { --belt-color: #10B981; --belt-knot: #059669; --belt-ink:#fff; }
+.belt-item[data-color="blue"]   { --belt-color: #3B82F6; --belt-knot: #2563EB; --belt-ink:#fff; }
+.belt-item[data-color="brown"]  { --belt-color: #8B5E3C; --belt-knot: #6D472C; --belt-ink:#fff; }
+.belt-item[data-color="black"]  { --belt-color: #111111; --belt-knot: #000000; --belt-ink:#fff; }
+
+@media (max-width: 600px) {
+  .belt-item { padding: 10px 12px; gap: 12px; }
+  .belt-visual { width: 150px; height: 26px; }
 }
