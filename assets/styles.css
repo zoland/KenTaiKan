@@ -405,7 +405,7 @@ li {
   .belt-item { padding: 10px 12px; gap: 10px; }
   .belt-visual { height: 32px; }
   .belt-label {
-    left: 22%;        /* ещё шире зона тени на телефоне */
+    left: 30%;        /* ещё шире зона тени на телефоне */
     right: 8px;
     padding: 3px 8px;
     gap: 1px;
