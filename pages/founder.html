@@ -41,7 +41,7 @@
             </div>
 
             <figure class="kanji-box" style="text-align:center">
-              <img src="../assets/Z1.png" alt="Золотарёв Андрей" style="max-width:100%; border-radius:12px;">
+              <img src="../assets/Z0.png" alt="Золотарёв Андрей" style="max-width:100%; border-radius:12px;">
               <figcaption class="muted" style="margin-top:8px">Золотарёв Андрей — основатель «Кен Тай Кан»</figcaption>
             </figure>
         </section>        
@@ -131,10 +131,7 @@
         Пермский Клуб во главе с А.Маслобойниковым (3 дан) прнимает решение заниматься под руководством А.Дьякова.
         </div>
 
-      <h2>Галерея</h2>
-      <section class="gallery-grid" id="gallery-founder">
-        <noscript>Добавьте файлы в папку assets с именами, начинающимися на Z (например, Z1.jpg, Z02.webp).</noscript>
-      </section>
+    <h2>Галерея</h2> <section class="gallery-grid" id="gallery-founder"></section>
 
       <div class="quote">
         «Айкидо — искусство созидания. Сила рождается из единства движения и намерения».
@@ -143,57 +140,12 @@
 
     </article>
   </main>
+      
+    <footer class="foot">© Кен Тай Кан, 2008–2025</footer>
   
-  <footer class="foot">© Кен Тай Кан, 2008–2025</footer>
+    <script src="../assets/gallery.js"></script> <script> buildPersonGallery({ prefix: 'A', basePath: '../assets/', mainSelector: '#main-photo', gallerySelector: '#gallery-founder', altBase: 'Золотарёв Андрей' }); </script> 
   
-  <script>
-    (function buildGallery(prefix, containerId) {
-      const exts = ['avif', 'webp', 'jpg', 'jpeg', 'png'];
-      const variants = [];
-      // Сгенерируем разумный набор базовых имён: Z1..Z8, Z01..Z08
-      for (let i = 1; i <= 8; i++) {
-        variants.push(prefix + i);
-        variants.push(prefix + String(i).padStart(2, '0'));
-      }
-      const container = document.getElementById(containerId);
-      const basePath = '../assets/';
-      const used = new Set();
-
-      function tryFirstAvailable(base) {
-        let resolved = false;
-        exts.reduce((p, ext) => {
-          return p.then(() => {
-            if (resolved) return;
-            return new Promise((resolve) => {
-              const img = new Image();
-              img.decoding = 'async';
-              img.loading = 'lazy';
-              img.fetchPriority = 'low';
-              img.src = basePath + base + '.' + ext;
-              img.onload = () => {
-                if (!resolved && !used.has(base)) {
-                  resolved = true;
-                  used.add(base);
-                  const fig = document.createElement('figure');
-                  const tag = document.createElement('img');
-                  tag.src = img.src;
-                  tag.alt = base;
-                  fig.appendChild(tag);
-                  container.appendChild(fig);
-                }
-                resolve();
-              };
-              img.onerror = () => resolve();
-            });
-          });
-        }, Promise.resolve());
-      }
-
-      variants.forEach(tryFirstAvailable);
-    })('Z', 'gallery-founder');
-  </script>  
-  
-  <script src="../assets/script.js"></script>
+    <script src="../assets/script.js"></script>
 </body>
 
 </html>
