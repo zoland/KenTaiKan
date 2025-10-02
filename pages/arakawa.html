@@ -42,7 +42,6 @@
             </div>
 
             <figure class="kanji-box" style="text-align:center">
-              <!-- При наличии замените на свой файл -->
               <img src="../assets/A1.png" alt="Аракава Ёсуке" style="max-width:100%; border-radius:12px;">
               <figcaption class="muted" style="margin-top:8px">Аракава Ёсуке, 7 дан Айкикай, школа Юбикай</figcaption>
             </figure>
@@ -82,68 +81,18 @@
             </p>
         </div>
   
-    <h2>Галерея</h2>
-    <section class="gallery-grid" id="gallery-arakawa">
-        <noscript>Добавьте файлы в папку assets с именами, начинающимися на A (например, A1.jpg, A02.webp).</noscript>
-    </section>
+    <h2>Галерея</h2> <section class="gallery-grid" id="gallery-arakawa"></section>
 
     <div class="quote">«Айкидо — о согласовании, а не о сопротивлении. Тело следует естественной линии — тогда движение становится сильным».
     </div>
     </article>
     </main>
   
-  <footer class="foot">© Кен Тай Кан, 2008–2025</footer>
+    <footer class="foot">© Кен Тай Кан, 2008–2025</footer>
   
-  <script>
-    // Универсальная автогалерея: берёт первые доступные форматы по базовому имени
-    (function buildGallery(prefix, containerId) {
-      const exts = ['avif', 'webp', 'jpg', 'jpeg', 'png'];
-      const variants = [];
-      // Сгенерируем разумный набор базовых имён: A1..A8, A01..A08
-      for (let i = 1; i <= 8; i++) {
-        variants.push(prefix + i);
-        variants.push(prefix + String(i).padStart(2, '0'));
-      }
-      const container = document.getElementById(containerId);
-      const basePath = '../assets/';
-
-      const used = new Set(); // чтобы не дублировать один номер при наличии нескольких форматов
-
-      function tryFirstAvailable(base) {
-        let resolved = false;
-        exts.reduce((p, ext) => {
-          return p.then(() => {
-            if (resolved) return;
-            return new Promise((resolve) => {
-              const img = new Image();
-              img.decoding = 'async';
-              img.loading = 'lazy';
-              img.fetchPriority = 'low';
-              img.src = basePath + base + '.' + ext;
-              img.onload = () => {
-                if (!resolved && !used.has(base)) {
-                  resolved = true;
-                  used.add(base);
-                  // Вставляем в галерею
-                  const fig = document.createElement('figure');
-                  const tag = document.createElement('img');
-                  tag.src = img.src;
-                  tag.alt = base;
-                  fig.appendChild(tag);
-                  container.appendChild(fig);
-                }
-                resolve();
-              };
-              img.onerror = () => resolve();
-            });
-          });
-        }, Promise.resolve());
-      }
-
-      variants.forEach(tryFirstAvailable);
-    })('A', 'gallery-arakawa');
-  </script>
-  <script src="../assets/script.js"></script>
+    <script src="../assets/gallery.js"></script> <script> buildPersonGallery({ prefix: 'A', basePath: '../assets/', mainSelector: '#main-photo', gallerySelector: '#gallery-arakawa', altBase: 'Аракава Ёсуке' }); </script> <script src="../assets/script.js"></script>
+   
+    <script src="../assets/script.js"></script>
 </body>
 
 </html>
