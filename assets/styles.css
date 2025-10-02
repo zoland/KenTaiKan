@@ -32,8 +32,8 @@ a {
 }
 a:hover { color: #fff; }
 
-/* Центрируем основные секции без обязательного .container в HTML */
-main.hero, section.grid, footer.foot {
+/* Центрируем основные секции (включая .container) */
+.container, main.hero, section.grid, footer.foot {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -160,26 +160,6 @@ li {
   color: var(--text-primary);
 }
 
-/* Пояса
-.belt-progression {
-  display: flex; justify-content: space-between; margin: 20px 0; flex-wrap: wrap;
-}
-.belt {
-  width: 90px; height: 34px; margin: 6px; border-radius: 17px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 700; font-size: 0.85em;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
-}
-.belt.white  { background: #ffffff; color: #000; border-color: #ccc; }
-.belt.yellow { background: #ffd700; color: #000; }
-.belt.orange { background: #ff8c00; }
-.belt.red    { background: #dc143c; }
-.belt.green  { background: #228b22; }
-.belt.blue   { background: #4169e1; }
-.belt.brown  { background: #8b4513; }
-.belt.black  { background: #000000; }
- */
 /* Цитаты */
 .quote {
   background: var(--glass-bg);
@@ -224,7 +204,6 @@ li {
 /* Адаптив */
 @media (max-width: 768px) {
   .kanji-section { grid-template-columns: 1fr; }
-  .belt-progression { justify-content: center; }
   h1 { font-size: 2rem; }
   h2 { font-size: 1.4rem; }
 }
@@ -252,7 +231,7 @@ li {
 }
 .site-header .line-1,
 .site-header .line-2 {
-  color: var(--accent-color);   /* красный */
+  color: var(--accent-color);
   font-weight: 800;
   letter-spacing: 0.2px;
 }
@@ -297,9 +276,8 @@ li {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--glass-border);
-    margin: 0; /* убираем внешний отступ, если был */
+    margin: 0;
   }
-  /* Чуть компактнее шапку на телефоне */
   .site-header { gap: 12px; padding: 10px 16px; }
   .logo-link img { height: 44px; }
 }
@@ -327,74 +305,51 @@ li {
   height: 28px;
   border-radius: 7px;
   background: var(--belt-color, #ccc);
-  box-shadow:
-    inset 0 2px 6px rgba(0,0,0,0.25),
-    0 0 0 1px rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
   overflow: hidden;
 }
-/* Лёгкая “текстура” ткани */
-.belt-visual::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    rgba(255,255,255,0.06), rgba(255,255,255,0.06) 6px,
-    rgba(0,0,0,0.06) 6px, rgba(0,0,0,0.06) 12px
-  );
+
+/* Текст на правой половине пояса */
+.belt-label {
+  position: absolute;
+  left: 50%;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #fff;
+  text-align: left;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%);
   pointer-events: none;
 }
-/* Узел по центру */
-.belt-visual::before {
-  content: "";
-  position: absolute;
-  left: 50%; top: -2px;
-  transform: translateX(-50%);
-  width: 28px; height: 32px;
-  border-radius: 5px;
-  background: var(--belt-knot, rgba(0,0,0,0.25));
-  box-shadow:
-    inset 0 1px 3px rgba(255,255,255,0.25),
-    inset 0 -1px 3px rgba(0,0,0,0.25),
-    0 0 0 1px rgba(0,0,0,0.2);
-}
+.belt-label .belt-name { font-weight: 700; line-height: 1.1; }
+.belt-label .belt-kyu  { font-size: 12px; opacity: 0.95; }
 
-.belt-text {
-  line-height: 1.15;
-}
-.belt-name {
-  font-weight: 700;
-  color: var(--belt-ink, #fff);
-}
-.belt-kyu {
-  font-size: 12px;
-  opacity: 0.85;
-  color: var(--belt-ink, #fff);
-}
+/* На случай, если где-то остался внешний текст */
+.belt-text, .belt-name, .belt-kyu { color: #fff; }
+.belt-item .belt-text { display: none !important; }
 
-/* Цвета поясов (настройки тона узла и читаемости текста) */
-.belt-item[data-color="white"]  { --belt-color: #ffffff; --belt-knot: #e5e7eb; --belt-ink:#111; }
-.belt-item[data-color="yellow"] { --belt-color: #FCD34D; --belt-knot: #EAB308; --belt-ink:#111; }
-.belt-item[data-color="orange"] { --belt-color: #FB923C; --belt-knot: #F97316; --belt-ink:#111; }
-.belt-item[data-color="red"]    { --belt-color: #EF4444; --belt-knot: #DC2626; --belt-ink:#fff; }
-.belt-item[data-color="green"]  { --belt-color: #10B981; --belt-knot: #059669; --belt-ink:#fff; }
-.belt-item[data-color="blue"]   { --belt-color: #3B82F6; --belt-knot: #2563EB; --belt-ink:#fff; }
-.belt-item[data-color="brown"]  { --belt-color: #8B5E3C; --belt-knot: #6D472C; --belt-ink:#fff; }
-.belt-item[data-color="black"]  { --belt-color: #111111; --belt-knot: #000000; --belt-ink:#fff; }
+/* Цвета поясов */
+.belt-item[data-color="white"]  { --belt-color: #ffffff; }
+.belt-item[data-color="yellow"] { --belt-color: #FCD34D; }
+.belt-item[data-color="orange"] { --belt-color: #FB923C; }
+.belt-item[data-color="red"]    { --belt-color: #EF4444; }
+.belt-item[data-color="green"]  { --belt-color: #10B981; }
+.belt-item[data-color="blue"]   { --belt-color: #3B82F6; }
+.belt-item[data-color="brown"]  { --belt-color: #8B5E3C; }
+.belt-item[data-color="black"]  { --belt-color: #111111; }
 
 @media (max-width: 600px) {
-  .belt-item { padding: 10px 12px; gap: 12px; }
+  .belt-item { padding: 10px 12px; gap: 10px; }
   .belt-visual { width: 150px; height: 26px; }
+  .belt-label {
+    left: 48%;
+    right: 6px;
+    gap: 1px;
+    padding: 2px 6px;
+  }
 }
-
-/* Belts: убрать полоски и сделать весь текст белым */
-.belt-visual::after { content: none !important; display: none !important; }
-
-.belt-name,
-.belt-kyu {
-  color: #fff !important;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.35); /* чуть лучше читается на светлых поясах */
-}
-
-/* Плоский пояс (без теней):
-.belt-visual { box-shadow: none !important; }
-*/
