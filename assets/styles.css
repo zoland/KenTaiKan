@@ -353,3 +353,61 @@ li {
     padding: 2px 6px;
   }
 }
+
+
+/* Растянуть пояс на всю ширину и усилить затемнение под текстом */
+.belt-item { align-items: stretch; }
+
+.belt-visual {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100% !important;
+  height: 34px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+/* Широкая текстовая зона с более плотным затемнением слева */
+.belt-label {
+  position: absolute;
+  left: 30%;          /* было 50% — сдвинул левее, чтобы тень начиналась раньше */
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: #fff;
+  text-align: left;
+  white-space: normal;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.55) 0%,   /* более плотная тень у левого края зоны */
+    rgba(0,0,0,0.45) 35%,
+    rgba(0,0,0,0.30) 70%,
+    rgba(0,0,0,0.20) 100%
+  );
+  pointer-events: none;
+}
+.belt-label .belt-name,
+.belt-label .belt-kyu {
+  overflow-wrap: anywhere;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+.belt-label .belt-name { font-weight: 700; line-height: 1.1; }
+.belt-label .belt-kyu  { font-size: 12px; opacity: 0.95; }
+
+/* Мобильные правки */
+@media (max-width: 600px) {
+  .belt-item { padding: 10px 12px; gap: 10px; }
+  .belt-visual { height: 32px; }
+  .belt-label {
+    left: 22%;        /* ещё шире зона тени на телефоне */
+    right: 8px;
+    padding: 3px 8px;
+    gap: 1px;
+  }
+}
