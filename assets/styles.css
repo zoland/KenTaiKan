@@ -385,3 +385,16 @@ li {
   .belt-item { padding: 10px 12px; gap: 12px; }
   .belt-visual { width: 150px; height: 26px; }
 }
+
+/* Belts: убрать полоски и сделать весь текст белым */
+.belt-visual::after { content: none !important; display: none !important; }
+
+.belt-name,
+.belt-kyu {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35); /* чуть лучше читается на светлых поясах */
+}
+
+/* Плоский пояс (без теней):
+.belt-visual { box-shadow: none !important; }
+*/
