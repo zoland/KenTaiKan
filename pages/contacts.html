@@ -25,27 +25,25 @@
     <main class="container">
     <article class="slide">
       <h1 class="h1">Контакты</h1>
-      <ul>
+    <ul>
         <li>Московский Клуб (Коротков Алексей): <a href="tel:+79037735655">+7 903 773‑56‑55</a></li>
-        <li>- WhatsUp: <a href="whatsapp://send?phone=79037735655"></a></li>
+        <li>- WhatsApp: <a href="https://wa.me/79037735655" target="_blank" rel="noopener">написать в WhatsApp</a></li>
         <li>Алтайская Школа, Аскат (Золотарёв Андрей): <a href="tel:+79160440444">+7 916 044‑04‑44</a></li>
         <li>- Email: <a href="mailto:zolandv@gmail.com">zolandv@gmail.com</a></li>
-        <li>- Telegram: <a href="#" onclick="openTelegram('Aikido_Ascat'); return false;"></a></li>
-      </ul>
-        <figure class="kanji-box" style="text-align:center">
-          <img src="../assets/Q0.png" alt="QR Telegram" style="max-width:100%; border-radius:12px;">
-          <figcaption class="muted" style="margin-top:8px">В Telegram мы выкладываем материалы, которые посчитали интересными или полезными, а так же наши школьные практики</figcaption>
-        </figure>
+        <li>- Telegram: <a href="https://t.me/Aikido_Ascat" target="_blank" rel="noopener">t.me/Aikido_Ascat</a></li>
+        <li><a href="#" onclick="openTelegram('Aikido_Ascat'); return false;">Открыть в приложении</a></li>
+    </ul>      
+    <figure class="kanji-box" style="text-align:center">
+      <img src="../assets/Q0.png" alt="QR Telegram" style="max-width:100%; border-radius:12px;">
+      <figcaption class="muted" style="margin-top:8px">В Telegram мы выкладываем материалы, которые посчитали интересными или полезными, а так же наши школьные практики</figcaption>
+    </figure>
     </article>
   </main>
   
   <footer class="foot">© Кен Тай Кан, 2008–2025</footer>
   <script src="../assets/script.js"></script>
-</body>
 
-
-
-<script>
+ <script>
   function openTelegram(username) {
     const appUrl = 'tg://resolve?domain=' + encodeURIComponent(username);
     const webUrl = 'https://t.me/' + encodeURIComponent(username);
@@ -55,4 +53,6 @@
     setTimeout(() => { window.open(webUrl, '_blank', 'noopener'); }, 800);
   }
 </script>
+
+</body>
 </html>
