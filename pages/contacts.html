@@ -27,10 +27,10 @@
       <h1 class="h1">Контакты</h1>
       <ul>
         <li>Московский Клуб (Коротков Алексей): <a href="tel:+79037735655">+7 903 773‑56‑55</a></li>
-        <li>- WhatsUp: <a href="По номеру:+79037735655">+7 903 773‑56‑55</a></li>
+        <li>- WhatsUp: <a href="whatsapp://send?phone=79037735655"></a></li>
         <li>Алтайская Школа, Аскат (Золотарёв Андрей): <a href="tel:+79160440444">+7 916 044‑04‑44</a></li>
         <li>- Email: <a href="mailto:zolandv@gmail.com">zolandv@gmail.com</a></li>
-        <li>- Telegram: <a href="t.me/Aikido_Ascat">t.me/Aikido_Ascat</a> </li>
+        <li>- Telegram: <a href="#" onclick="openTelegram('Aikido_Ascat'); return false;"></a></li>
       </ul>
         <figure class="kanji-box" style="text-align:center">
           <img src="../assets/Q0.png" alt="QR Telegram" style="max-width:100%; border-radius:12px;">
@@ -43,4 +43,16 @@
   <script src="../assets/script.js"></script>
 </body>
 
+
+
+<script>
+  function openTelegram(username) {
+    const appUrl = 'tg://resolve?domain=' + encodeURIComponent(username);
+    const webUrl = 'https://t.me/' + encodeURIComponent(username);
+    // Пытаемся открыть приложение
+    window.location.href = appUrl;
+    // Если приложения нет — через 800 мс уходим в веб
+    setTimeout(() => { window.open(webUrl, '_blank', 'noopener'); }, 800);
+  }
+</script>
 </html>
